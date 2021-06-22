@@ -10,11 +10,12 @@ public class Stack {
         Stack stack = new Stack();
 
         int choice = 0;
-        while (choice != 3) {
+        while (choice != 4) {
 
             System.out.println("1)Add number in Stack");
-            System.out.println("2)Print Stack");
-            System.out.println("3)Exit");
+            System.out.println("2)Peek");
+            System.out.println("3)pop");
+            System.out.println("4)Exit");
             choice = sc.nextInt();
             switch (choice) {
                 case 1:
@@ -23,6 +24,12 @@ public class Stack {
                     stack.add(num);
                     break;
                 case 2:
+                    stack.peek();
+                    break;
+                case 3:
+                    stack.pop();
+                    break;
+                case 4:
                     break;
             }
 
@@ -41,7 +48,33 @@ public class Stack {
             }
             temp.setNext(node);
         }
+    }
+
+    public <E> void pop() {
+        if(head == null){
+            System.out.println("The stack is empty");
+        }
+        else {
+            Node temp = head;
+            Node prev = temp;
+            while (temp.getNext() != null) {
+                prev = temp;
+                temp = temp.getNext();
+            }
+            System.out.println(temp.getNode());
+            if (prev == temp) {
+                head = null;
+            }
+            prev.setNext(null);
+        }
+    }
 
 
+    public <E> void peek() {
+        Node temp = head;
+        while (temp.getNext() != null) {
+            temp = temp.getNext();
+        }
+        System.out.println(temp.getNode());
     }
 }
