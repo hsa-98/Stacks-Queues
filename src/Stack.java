@@ -11,13 +11,14 @@ public class Stack {
         Stack stack = new Stack();
 
         int choice = 0;
-        while (choice != 5) {
+        while (choice != 6) {
 
             System.out.println("1)Add number in Stack");
             System.out.println("2)Peek");
             System.out.println("3)pop");
             System.out.println("4)Add number in queue");
-            System.out.println("5)Exit");
+            System.out.println("5)Dequeue");
+            System.out.println("6)Exit");
             choice = sc.nextInt();
             switch (choice) {
                 case 1:
@@ -35,6 +36,11 @@ public class Stack {
                     System.out.println("Enter the number you want to add");
                     num = sc.nextInt();
                     stack.addQueue(num);
+                    break;
+                case 5:
+                    stack.deQueue();
+                    break;
+                case 6:
                     break;
             }
 
@@ -98,6 +104,15 @@ public class Stack {
 
     }
 
+    public <E> void deQueue() {
+        if(queueHead == null){
+            System.out.println("The queue is empty");
+        }
+        else {
+            System.out.println(queueHead.getNode());
+            queueHead = queueHead.getNext();
+        }
+    }
 
 
 
