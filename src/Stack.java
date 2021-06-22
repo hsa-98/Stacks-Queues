@@ -2,6 +2,7 @@ import java.util.Scanner;
 
 public class Stack {
     Node head = new Node();
+    Node queueHead = new Node();
     Scanner sc = new Scanner(System.in);
 
     public static void main(String[] args) {
@@ -10,12 +11,13 @@ public class Stack {
         Stack stack = new Stack();
 
         int choice = 0;
-        while (choice != 4) {
+        while (choice != 5) {
 
             System.out.println("1)Add number in Stack");
             System.out.println("2)Peek");
             System.out.println("3)pop");
-            System.out.println("4)Exit");
+            System.out.println("4)Add number in queue");
+            System.out.println("5)Exit");
             choice = sc.nextInt();
             switch (choice) {
                 case 1:
@@ -30,6 +32,9 @@ public class Stack {
                     stack.pop();
                     break;
                 case 4:
+                    System.out.println("Enter the number you want to add");
+                    num = sc.nextInt();
+                    stack.addQueue(num);
                     break;
             }
 
@@ -77,4 +82,23 @@ public class Stack {
         }
         System.out.println(temp.getNode());
     }
+
+    public <E> void addQueue(E num){
+        if (queueHead.getNode() == null) {
+            queueHead.setNode( num);
+        } else {
+            Node node = new Node();
+            node.setNode( num);
+            Node temp = queueHead;
+            while (temp.getNext() != null) {
+                temp = temp.getNext();
+            }
+            temp.setNext(node);
+        }
+
+    }
+
+
+
+
 }
